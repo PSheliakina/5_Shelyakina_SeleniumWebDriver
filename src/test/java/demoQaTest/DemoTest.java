@@ -104,15 +104,6 @@ public class DemoTest {
         driver.findElement(By.xpath("//div[text()='Gurgaon']")).click();
 
         //Subject - не работает
-//        driver.findElement(By.cssSelector(".subjects-auto-complete__placeholder")).click();
-//        driver.findElement(By.cssSelector(".subjects-auto-complete__placeholder")).sendKeys(subject);
-//        driver.findElement(By.xpath("//div[text()='Maths']")).click();
-
-
-        //Subject - !!!
-//        (By.cssSelector(".subjects-auto-complete__placeholder"))
-//        By.cssSelector(".subjects-auto-complete__control")
-//          By.cssSelector("")
 
         WebElement subjectInput = driver.findElement(By.id("subjectsInput"));
 
@@ -122,7 +113,6 @@ public class DemoTest {
 
         //Submit
         driver.findElement(By.cssSelector("button#submit")).click();
-
 
         //Verify
         WebElement studentNameTable = driver.findElement(By.xpath("//tr[1]//td[2]"));
@@ -165,7 +155,7 @@ public class DemoTest {
         String studentStateCity = StateCityTable.getText();
         Assertions.assertEquals("NCR Gurgaon", studentStateCity);
 
-        Thread.sleep(2000);
+        Thread.sleep(3000);
     }
 
     @AfterEach
