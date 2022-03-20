@@ -1,6 +1,7 @@
 package demoQaTest;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -45,6 +46,8 @@ public class DemoTest {
     public void checkFormIsFilled() throws InterruptedException {
 
         file = new File("src/kotik.jpg");
+
+        SoftAssertions SoftAssert = new SoftAssertions();
 
         String firstName = "Ivan";
         String lastName = "Ivanov";
@@ -117,43 +120,55 @@ public class DemoTest {
         //Verify
         WebElement studentNameTable = driver.findElement(By.xpath("//tr[1]//td[2]"));
         String studentName = studentNameTable.getText();
-        Assertions.assertEquals("Ivan Ivanov", studentName);
+//        Assertions.assertEquals("Ivan Ivanov", studentName);
+        SoftAssert.assertThat(studentName).isEqualTo("Ivan Ivanov");
 
         WebElement studentEmailtable = driver.findElement(By.xpath("//tr[2]//td[2]"));
         String studentEmail = studentEmailtable.getText();
-        Assertions.assertEquals(email, studentEmail);
+//        Assertions.assertEquals(email, studentEmail);
+        SoftAssert.assertThat(studentEmail).isEqualTo(email);
 
         WebElement genderTable = driver.findElement(By.xpath("//tr[3]//td[2]"));
         String genderSelected = genderTable.getText();
-        Assertions.assertEquals("Male", genderSelected);
+//        Assertions.assertEquals("Male", genderSelected);
+        SoftAssert.assertThat(genderSelected).isEqualTo("Male");
 
-        WebElement mobeleTable = driver.findElement(By.xpath("//tr[4]//td[2]"));
-        String StudentMobile = mobeleTable.getText();
-        Assertions.assertEquals(mobileNum, StudentMobile);
+        WebElement mobileTable = driver.findElement(By.xpath("//tr[4]//td[2]"));
+        String StudentMobile = mobileTable.getText();
+//        Assertions.assertEquals(mobileNum, StudentMobile);
+        SoftAssert.assertThat(StudentMobile).isEqualTo(mobileNum);
 
         WebElement birthDateTable = driver.findElement(By.xpath("//tr[5]//td[2]"));
         String StudentBirthDate = birthDateTable.getText();
-        Assertions.assertEquals("13 May,2003", StudentBirthDate);
+//        Assertions.assertEquals("13 May,2003", StudentBirthDate);
+        SoftAssert.assertThat(StudentBirthDate).isEqualTo("13 May,2003");
 
         WebElement subjectTable = driver.findElement(By.xpath("//tr[6]//td[2]"));
         String studentSubject = subjectTable.getText();
-        Assertions.assertEquals(subject, studentSubject);
+//        Assertions.assertEquals(subject, studentSubject);
+        SoftAssert.assertThat(studentSubject).isEqualTo(subject);
 
         WebElement hobbiesTable = driver.findElement(By.xpath("//tr[7]//td[2]"));
         String studentHobbies = hobbiesTable.getText();
-        Assertions.assertEquals("Sports, Reading", studentHobbies);
+//        Assertions.assertEquals("Sports, Reading", studentHobbies);
+        SoftAssert.assertThat(studentHobbies).isEqualTo("Sports, Reading");
 
         WebElement pictureTable = driver.findElement(By.xpath("//tr[8]//td[2]"));
         String studentPicture = pictureTable.getText();
-        Assertions.assertEquals("kotik.jpg", studentPicture);
+//        Assertions.assertEquals("kotik.jpg", studentPicture);
+        SoftAssert.assertThat(studentPicture).isEqualTo("kotik.jpg");
 
         WebElement adressTable = driver.findElement(By.xpath("//tr[9]//td[2]"));
         String studentAddress = adressTable.getText();
-        Assertions.assertEquals(address, studentAddress);
+//        Assertions.assertEquals(address, studentAddress);
+        SoftAssert.assertThat(studentAddress).isEqualTo(address);
 
         WebElement StateCityTable = driver.findElement(By.xpath("//tr[10]//td[2]"));
         String studentStateCity = StateCityTable.getText();
-        Assertions.assertEquals("NCR Gurgaon", studentStateCity);
+//        Assertions.assertEquals("NCR Gurgaon", studentStateCity);
+        SoftAssert.assertThat(studentStateCity).isEqualTo("NCR Gurgaon");
+
+        SoftAssert.assertAll();
 
         Thread.sleep(3000);
     }
@@ -164,4 +179,3 @@ public class DemoTest {
     }
 
 }
-
